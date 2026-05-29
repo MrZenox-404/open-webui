@@ -803,12 +803,12 @@
 						<div class=" self-center flex items-center justify-center size-9">
 							<div class="flex items-center justify-center group-hover:hidden">
 								<img
-									src="{WEBUI_BASE_URL}/static/rtl_logo_light.png"
+									src="{WEBUI_BASE_URL}/static/rtl_logo_light.svg"
 									class="sidebar-new-chat-icon size-6 object-contain dark:hidden"
 									alt="RTL Group"
 								/>
 								<img
-									src="{WEBUI_BASE_URL}/static/rtl_logo_dark.png"
+									src="{WEBUI_BASE_URL}/static/rtl_logo_dark.svg"
 									class="sidebar-new-chat-icon size-6 object-contain hidden dark:block"
 									alt="RTL Group"
 								/>
@@ -1023,13 +1023,13 @@
 				>
 					<img
 						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/rtl_logo_light.png"
+						src="{WEBUI_BASE_URL}/static/rtl_logo_light.svg"
 						class="self-center h-10 w-auto object-contain dark:hidden"
 						alt="RTL Group"
 					/>
 					<img
 						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/rtl_logo_dark.png"
+						src="{WEBUI_BASE_URL}/static/rtl_logo_dark.svg"
 						class="self-center h-10 w-auto object-contain hidden dark:block"
 						alt="RTL Group"
 					/>

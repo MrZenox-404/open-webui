@@ -289,7 +289,7 @@
 								<!-- RTL brand header: logo top-left, heading to the right -->
 								<div class="flex items-center gap-3.5 mb-1 reveal" style="animation-delay: 60ms;">
 									<img
-										src="{WEBUI_BASE_URL}/static/rtl_logo_dark.png"
+										src="{WEBUI_BASE_URL}/static/rtl_logo_dark.svg"
 										class="h-9 w-auto shrink-0 select-none pointer-events-none brand-logo"
 										alt="RTL"
 										draggable="false"
