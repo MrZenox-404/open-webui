@@ -1688,7 +1688,7 @@
 
 	/* Frosted glass tint sitting over the blurred photo */
 	.sidebar-glass {
-		background: rgba(255, 255, 255, 0.55);
+		background: rgba(255, 255, 255, 0.66);
 		border-inline-end: 1px solid rgba(0, 0, 0, 0.12);
 		box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.3);
 	}
