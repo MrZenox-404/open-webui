@@ -801,11 +801,18 @@
 						aria-label={$showSidebar ? $i18n.t('Close Sidebar') : $i18n.t('Open Sidebar')}
 					>
 						<div class=" self-center flex items-center justify-center size-9">
-							<img
-								src="{WEBUI_BASE_URL}/static/favicon.png"
-								class="sidebar-new-chat-icon size-6 rounded-full group-hover:hidden"
-								alt=""
-							/>
+							<div class="flex items-center justify-center group-hover:hidden">
+								<img
+									src="{WEBUI_BASE_URL}/static/rtl_logo_light.png"
+									class="sidebar-new-chat-icon size-6 object-contain dark:hidden"
+									alt="RTL Group"
+								/>
+								<img
+									src="{WEBUI_BASE_URL}/static/rtl_logo_dark.png"
+									class="sidebar-new-chat-icon size-6 object-contain hidden dark:block"
+									alt="RTL Group"
+								/>
+							</div>
 
 							<Sidebar className="size-5 hidden group-hover:flex" />
 						</div>
@@ -1004,25 +1011,28 @@
 				class="sidebar px-[0.5625rem] pt-2 pb-1.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400 sticky top-0 z-10 -mb-3"
 			>
 				<a
-					class="flex items-center rounded-xl size-8.5 h-full justify-center hover:bg-gray-100/50 dark:hover:bg-gray-850/50 transition no-drag-region"
+					class="flex flex-1 items-center px-0.5 h-full no-drag-region"
 					href="/"
 					draggable="false"
 					on:click={newChatHandler}
 				>
 					<img
 						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class="sidebar-new-chat-icon size-6 rounded-full"
-						alt=""
+						src="{WEBUI_BASE_URL}/static/rtl_logo_light.png"
+						class="self-center h-10 w-auto object-contain dark:hidden"
+						alt="RTL Group"
 					/>
-				</a>
-
-				<a href="/" class="flex flex-1 px-0.5" on:click={newChatHandler}>
+					<img
+						crossorigin="anonymous"
+						src="{WEBUI_BASE_URL}/static/rtl_logo_dark.png"
+						class="self-center h-10 w-auto object-contain hidden dark:block"
+						alt="RTL Group"
+					/>
 					<div
 						id="sidebar-webui-name"
-						class=" self-center font-medium text-gray-850 dark:text-white font-primary"
+						class="self-center ml-2 text-lg font-medium text-gray-850 dark:text-white font-primary"
 					>
-						{$WEBUI_NAME}
+						RTL Group
 					</div>
 				</a>
 				<Tooltip

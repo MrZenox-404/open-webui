@@ -142,6 +142,16 @@
 
 	let onboarding = false;
 
+	// Parallax: track normalized mouse offset (-0.5 .. 0.5)
+	let mouseX = 0;
+	let mouseY = 0;
+
+	const handleMouseMove = (e) => {
+		if (typeof window === 'undefined') return;
+		mouseX = e.clientX / window.innerWidth - 0.5;
+		mouseY = e.clientY / window.innerHeight - 0.5;
+	};
+
 	async function setLogoImage() {
 		await tick();
 		const logo = document.getElementById('logo');
@@ -208,24 +218,54 @@
 	}}
 />
 
-<div class="w-full h-screen max-h-[100dvh] text-white relative" id="auth-page">
-	<div class="w-full h-full absolute top-0 left-0 bg-white dark:bg-black"></div>
+<svelte:window on:mousemove={handleMouseMove} />
 
-	<div class="w-full absolute top-0 left-0 right-0 h-8 drag-region" />
+<div class="w-full h-screen max-h-[100dvh] text-white relative overflow-hidden" id="auth-page">
+	<!-- Parallax background: RTL towers at blue hour -->
+	<div
+		class="absolute inset-0 bg-black parallax-bg"
+		style="background-image: url('{WEBUI_BASE_URL}/static/rtl_lu.jpg'); transform: translate3d({-mouseX *
+			36}px, {-mouseY * 28}px, 0) scale(1.18);"
+	></div>
+
+	<!-- Cinematic gradient overlay for contrast -->
+	<div
+		class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/65 pointer-events-none"
+	></div>
+	<div
+		class="absolute inset-0 bg-gradient-to-r from-black/55 via-transparent to-black/55 pointer-events-none"
+	></div>
+
+	<!-- Vintage: warm color grade + film grain + vignette -->
+	<div class="absolute inset-0 vintage-tint pointer-events-none"></div>
+	<div class="absolute inset-0 film-grain pointer-events-none"></div>
+	<div class="absolute inset-0 vignette pointer-events-none"></div>
+
+	<!-- Vintage ornamental frame (parallax counter-movement) -->
+	<div class="vintage-frame" style="transform: translate3d({mouseX * 10}px, {mouseY * 10}px, 0);">
+		<span class="corner corner-tl"></span>
+		<span class="corner corner-tr"></span>
+		<span class="corner corner-bl"></span>
+		<span class="corner corner-br"></span>
+	</div>
+
+	<div class="w-full absolute top-0 left-0 right-0 h-8 drag-region z-50" />
 
 	{#if loaded}
 		<div
-			class="fixed bg-transparent min-h-screen w-full flex justify-center font-primary z-50 text-black dark:text-white"
+			class="fixed bg-transparent min-h-screen w-full flex justify-center items-center font-primary z-50 text-white"
 			id="auth-container"
 		>
-			<div class="w-full px-10 min-h-screen flex flex-col text-center">
+			<div
+				class="w-full px-6 sm:px-10 min-h-screen flex flex-col items-center justify-center text-center"
+			>
 				{#if ($config?.features.auth_trusted_header ?? false) || $config?.features.auth === false}
-					<div class=" my-auto pb-10 w-full sm:max-w-md">
+					<div class="glass-card reveal w-full sm:max-w-md px-8 py-10">
 						<div
-							class="flex items-center justify-center gap-3 text-xl sm:text-2xl text-center font-medium dark:text-gray-200"
+							class="flex items-center justify-center gap-3 text-xl sm:text-2xl text-center font-secondary"
 						>
 							<div>
-								{$i18n.t('Signing in to {{WEBUI_NAME}}', { WEBUI_NAME: $WEBUI_NAME })}
+								{$i18n.t('Signing in to {{WEBUI_NAME}}', { WEBUI_NAME: 'RTL Chat' })}
 							</div>
 
 							<div>
@@ -234,111 +274,113 @@
 						</div>
 					</div>
 				{:else}
-					<div class="my-auto flex flex-col justify-center items-center">
-						<div class=" sm:max-w-md my-auto pb-10 w-full dark:text-gray-100">
-							{#if $config?.metadata?.auth_logo_position === 'center'}
-								<div class="flex justify-center mb-6">
-									<img
-										id="logo"
-										crossorigin="anonymous"
-										src="{WEBUI_BASE_URL}/static/favicon.png"
-										class="size-24 rounded-full"
-										alt="{$WEBUI_NAME} logo"
-									/>
-								</div>
-							{/if}
+					<div class="my-auto flex flex-col justify-center items-center w-full">
+						<div
+							class="glass-card w-full sm:max-w-md px-7 sm:px-9 py-9 sm:py-10 text-left"
+							style="transform: translate3d({mouseX * -12}px, {mouseY * -12}px, 0);"
+						>
 							<form
-								class=" flex flex-col justify-center"
+								class="flex flex-col justify-center"
 								on:submit={(e) => {
 									e.preventDefault();
 									submitHandler();
 								}}
 							>
-								<div class="mb-1">
-									<div class=" text-2xl font-medium">
+								<!-- RTL brand header: logo top-left, heading to the right -->
+								<div class="flex items-center gap-3.5 mb-1 reveal" style="animation-delay: 60ms;">
+									<img
+										src="{WEBUI_BASE_URL}/static/rtl_logo_dark.png"
+										class="h-9 w-auto shrink-0 select-none pointer-events-none brand-logo"
+										alt="RTL"
+										draggable="false"
+									/>
+									<div class="text-2xl leading-tight font-secondary text-left">
 										{#if $config?.onboarding ?? false}
-											{$i18n.t(`Get started with {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
+											{$i18n.t(`Get started with {{WEBUI_NAME}}`, { WEBUI_NAME: 'RTL Chat' })}
 										{:else if mode === 'ldap'}
-											{$i18n.t(`Sign in to {{WEBUI_NAME}} with LDAP`, { WEBUI_NAME: $WEBUI_NAME })}
+											{$i18n.t(`Sign in to {{WEBUI_NAME}} with LDAP`, { WEBUI_NAME: 'RTL Chat' })}
 										{:else if mode === 'signin'}
-											{$i18n.t(`Sign in to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
+											{$i18n.t(`Sign in to {{WEBUI_NAME}}`, { WEBUI_NAME: 'RTL Chat' })}
 										{:else}
-											{$i18n.t(`Sign up to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
+											{$i18n.t(`Sign up to {{WEBUI_NAME}}`, { WEBUI_NAME: 'RTL Chat' })}
 										{/if}
 									</div>
-
-									{#if $config?.onboarding ?? false}
-										<div class="mt-1 text-xs font-medium text-gray-600 dark:text-gray-500">
-											ⓘ {$WEBUI_NAME}
-											{$i18n.t(
-												'does not make any external connections, and your data stays securely on your locally hosted server.'
-											)}
-										</div>
-									{/if}
 								</div>
 
+								{#if $config?.onboarding ?? false}
+									<div
+										class="mb-1 text-xs font-medium text-amber-100/60 text-left reveal"
+										style="animation-delay: 120ms;"
+									>
+										ⓘ {$WEBUI_NAME}
+										{$i18n.t(
+											'does not make any external connections, and your data stays securely on your locally hosted server.'
+										)}
+									</div>
+								{/if}
+
 								{#if $config?.features.enable_login_form || $config?.features.enable_ldap || form}
-									<div class="flex flex-col mt-4">
+									<div class="flex flex-col mt-6 reveal" style="animation-delay: 180ms;">
 										{#if mode === 'signup'}
-											<div class="mb-2">
-												<label for="name" class="text-sm font-medium text-left mb-1 block"
-													>{$i18n.t('Name')}</label
-												>
-												<input
-													bind:value={name}
-													type="text"
-													id="name"
-													class="my-0.5 w-full text-sm outline-hidden bg-transparent placeholder:text-gray-300 dark:placeholder:text-gray-600"
-													autocomplete="name"
-													placeholder={$i18n.t('Enter Your Full Name')}
-													required
-												/>
+											<div class="mb-3">
+												<label for="name" class="field-label">{$i18n.t('Name')}</label>
+												<div class="auth-input">
+													<input
+														bind:value={name}
+														type="text"
+														id="name"
+														class="w-full text-sm bg-transparent outline-hidden placeholder:text-white/40"
+														autocomplete="name"
+														placeholder={$i18n.t('Enter Your Full Name')}
+														required
+													/>
+												</div>
 											</div>
 										{/if}
 
 										{#if mode === 'ldap'}
-											<div class="mb-2">
-												<label for="username" class="text-sm font-medium text-left mb-1 block"
-													>{$i18n.t('Username')}</label
-												>
-												<input
-													bind:value={ldapUsername}
-													type="text"
-													class="my-0.5 w-full text-sm outline-hidden bg-transparent placeholder:text-gray-300 dark:placeholder:text-gray-600"
-													autocomplete="username"
-													name="username"
-													id="username"
-													placeholder={$i18n.t('Enter Your Username')}
-													required
-												/>
+											<div class="mb-3">
+												<label for="username" class="field-label">{$i18n.t('Username')}</label>
+												<div class="auth-input">
+													<input
+														bind:value={ldapUsername}
+														type="text"
+														class="w-full text-sm bg-transparent outline-hidden placeholder:text-white/40"
+														autocomplete="username"
+														name="username"
+														id="username"
+														placeholder={$i18n.t('Enter Your Username')}
+														required
+													/>
+												</div>
 											</div>
 										{:else}
-											<div class="mb-2">
-												<label for="email" class="text-sm font-medium text-left mb-1 block"
-													>{$i18n.t('Email')}</label
-												>
-												<input
-													bind:value={email}
-													type="email"
-													id="email"
-													class="my-0.5 w-full text-sm outline-hidden bg-transparent placeholder:text-gray-300 dark:placeholder:text-gray-600"
-													autocomplete="email"
-													name="email"
-													placeholder={$i18n.t('Enter Your Email')}
-													required
-												/>
+											<div class="mb-3">
+												<label for="email" class="field-label">{$i18n.t('Email')}</label>
+												<div class="auth-input">
+													<input
+														bind:value={email}
+														type="email"
+														id="email"
+														class="w-full text-sm bg-transparent outline-hidden placeholder:text-white/40"
+														autocomplete="email"
+														name="email"
+														placeholder={$i18n.t('Enter Your Email')}
+														required
+													/>
+												</div>
 											</div>
 										{/if}
 
 										<div>
-											<label for="password" class="text-sm font-medium text-left mb-1 block"
-												>{$i18n.t('Password')}</label
-											>
+											<label for="password" class="field-label">{$i18n.t('Password')}</label>
 											<SensitiveInput
 												bind:value={password}
 												type="password"
 												id="password"
-												class="my-0.5 w-full text-sm outline-hidden bg-transparent placeholder:text-gray-300 dark:placeholder:text-gray-600"
+												outerClassName="auth-input"
+												inputClassName="w-full text-sm bg-transparent outline-hidden placeholder:text-white/40"
+												showButtonClassName="pl-2 transition bg-transparent text-white/50 hover:text-white"
 												placeholder={$i18n.t('Enter Your Password')}
 												autocomplete={mode === 'signup' ? 'new-password' : 'current-password'}
 												name="password"
@@ -349,17 +391,17 @@
 										</div>
 
 										{#if mode === 'signup' && $config?.features?.enable_signup_password_confirmation}
-											<div class="mt-2">
-												<label
-													for="confirm-password"
-													class="text-sm font-medium text-left mb-1 block"
+											<div class="mt-3">
+												<label for="confirm-password" class="field-label"
 													>{$i18n.t('Confirm Password')}</label
 												>
 												<SensitiveInput
 													bind:value={confirmPassword}
 													type="password"
 													id="confirm-password"
-													class="my-0.5 w-full text-sm outline-hidden bg-transparent"
+													outerClassName="auth-input"
+													inputClassName="w-full text-sm bg-transparent outline-hidden placeholder:text-white/40"
+													showButtonClassName="pl-2 transition bg-transparent text-white/50 hover:text-white"
 													placeholder={$i18n.t('Confirm Your Password')}
 													autocomplete="new-password"
 													name="confirm-password"
@@ -369,20 +411,14 @@
 										{/if}
 									</div>
 								{/if}
-								<div class="mt-5">
+								<div class="mt-6 reveal" style="animation-delay: 240ms;">
 									{#if $config?.features.enable_login_form || $config?.features.enable_ldap || form}
 										{#if mode === 'ldap'}
-											<button
-												class="bg-gray-700/5 hover:bg-gray-700/10 dark:bg-gray-100/5 dark:hover:bg-gray-100/10 dark:text-gray-300 dark:hover:text-white transition w-full rounded-full font-medium text-sm py-2.5"
-												type="submit"
-											>
+											<button class="btn-rtl w-full text-sm py-3" type="submit">
 												{$i18n.t('Authenticate')}
 											</button>
 										{:else}
-											<button
-												class="bg-gray-700/5 hover:bg-gray-700/10 dark:bg-gray-100/5 dark:hover:bg-gray-100/10 dark:text-gray-300 dark:hover:text-white transition w-full rounded-full font-medium text-sm py-2.5"
-												type="submit"
-											>
+											<button class="btn-rtl w-full text-sm py-3" type="submit">
 												{mode === 'signin'
 													? $i18n.t('Sign in')
 													: ($config?.onboarding ?? false)
@@ -391,13 +427,13 @@
 											</button>
 
 											{#if $config?.features.enable_signup && !($config?.onboarding ?? false)}
-												<div class=" mt-4 text-sm text-center">
+												<div class="mt-5 text-sm text-center text-white/70">
 													{mode === 'signin'
 														? $i18n.t("Don't have an account?")
 														: $i18n.t('Already have an account?')}
 
 													<button
-														class=" font-medium underline"
+														class="font-medium text-[#f5824d] hover:text-[#f2691f] transition underline-offset-4 hover:underline"
 														type="button"
 														on:click={() => {
 															if (mode === 'signin') {
@@ -417,21 +453,23 @@
 							</form>
 
 							{#if Object.keys($config?.oauth?.providers ?? {}).length > 0}
-								<div class="inline-flex items-center justify-center w-full">
-									<hr class="w-32 h-px my-4 border-0 dark:bg-gray-100/10 bg-gray-700/10" />
+								<div
+									class="inline-flex items-center justify-center w-full reveal"
+									style="animation-delay: 300ms;"
+								>
+									<hr class="w-full h-px my-5 border-0 bg-white/15" />
 									{#if $config?.features.enable_login_form || $config?.features.enable_ldap || form}
-										<span
-											class="px-3 text-sm font-medium text-gray-900 dark:text-white bg-transparent"
+										<span class="px-3 text-xs uppercase tracking-widest text-white/50 bg-transparent"
 											>{$i18n.t('or')}</span
 										>
 									{/if}
 
-									<hr class="w-32 h-px my-4 border-0 dark:bg-gray-100/10 bg-gray-700/10" />
+									<hr class="w-full h-px my-5 border-0 bg-white/15" />
 								</div>
-								<div class="flex flex-col space-y-2">
+								<div class="flex flex-col space-y-2.5 reveal" style="animation-delay: 360ms;">
 									{#if $config?.oauth?.providers?.google}
 										<button
-											class="flex justify-center items-center bg-gray-700/5 hover:bg-gray-700/10 dark:bg-gray-100/5 dark:hover:bg-gray-100/10 dark:text-gray-300 dark:hover:text-white transition w-full rounded-full font-medium text-sm py-2.5"
+											class="btn-glass flex justify-center items-center w-full text-sm py-2.5"
 											on:click={() => {
 												window.location.href = `${WEBUI_BASE_URL}/oauth/google/login`;
 											}}
@@ -461,7 +499,7 @@
 									{/if}
 									{#if $config?.oauth?.providers?.microsoft}
 										<button
-											class="flex justify-center items-center bg-gray-700/5 hover:bg-gray-700/10 dark:bg-gray-100/5 dark:hover:bg-gray-100/10 dark:text-gray-300 dark:hover:text-white transition w-full rounded-full font-medium text-sm py-2.5"
+											class="btn-glass flex justify-center items-center w-full text-sm py-2.5"
 											on:click={() => {
 												window.location.href = `${WEBUI_BASE_URL}/oauth/microsoft/login`;
 											}}
@@ -486,13 +524,12 @@
 													fill="#ffb900"
 												/>
 											</svg>
-											<span>{$i18n.t('Continue with {{provider}}', { provider: 'Microsoft' })}</span
-											>
+											<span>{$i18n.t('Continue with {{provider}}', { provider: 'Microsoft' })}</span>
 										</button>
 									{/if}
 									{#if $config?.oauth?.providers?.github}
 										<button
-											class="flex justify-center items-center bg-gray-700/5 hover:bg-gray-700/10 dark:bg-gray-100/5 dark:hover:bg-gray-100/10 dark:text-gray-300 dark:hover:text-white transition w-full rounded-full font-medium text-sm py-2.5"
+											class="btn-glass flex justify-center items-center w-full text-sm py-2.5"
 											on:click={() => {
 												window.location.href = `${WEBUI_BASE_URL}/oauth/github/login`;
 											}}
@@ -513,7 +550,7 @@
 									{/if}
 									{#if $config?.oauth?.providers?.oidc}
 										<button
-											class="flex justify-center items-center bg-gray-700/5 hover:bg-gray-700/10 dark:bg-gray-100/5 dark:hover:bg-gray-100/10 dark:text-gray-300 dark:hover:text-white transition w-full rounded-full font-medium text-sm py-2.5"
+											class="btn-glass flex justify-center items-center w-full text-sm py-2.5"
 											on:click={() => {
 												window.location.href = `${WEBUI_BASE_URL}/oauth/oidc/login`;
 											}}
@@ -543,7 +580,7 @@
 									{/if}
 									{#if $config?.oauth?.providers?.feishu}
 										<button
-											class="flex justify-center items-center bg-gray-700/5 hover:bg-gray-700/10 dark:bg-gray-100/5 dark:hover:bg-gray-100/10 dark:text-gray-300 dark:hover:text-white transition w-full rounded-full font-medium text-sm py-2.5"
+											class="btn-glass flex justify-center items-center w-full text-sm py-2.5"
 											on:click={() => {
 												window.location.href = `${WEBUI_BASE_URL}/oauth/feishu/login`;
 											}}
@@ -555,9 +592,9 @@
 							{/if}
 
 							{#if $config?.features.enable_ldap && $config?.features.enable_login_form}
-								<div class="mt-2">
+								<div class="mt-4">
 									<button
-										class="flex justify-center items-center text-xs w-full text-center underline"
+										class="flex justify-center items-center text-xs w-full text-center text-white/60 hover:text-white transition underline-offset-4 hover:underline"
 										type="button"
 										on:click={() => {
 											if (mode === 'ldap')
@@ -575,8 +612,8 @@
 							{/if}
 						</div>
 						{#if $config?.metadata?.login_footer}
-							<div class="max-w-3xl mx-auto">
-								<div class="mt-2 text-[0.7rem] text-gray-500 dark:text-gray-400 marked">
+							<div class="max-w-3xl mx-auto reveal" style="animation-delay: 420ms;">
+								<div class="mt-4 text-[0.7rem] text-white/50 marked">
 									{@html DOMPurify.sanitize(marked($config?.metadata?.login_footer))}
 								</div>
 							</div>
@@ -586,20 +623,292 @@
 			</div>
 		</div>
 
-		{#if !$config?.metadata?.auth_logo_position}
-			<div class="fixed m-10 z-50">
-				<div class="flex space-x-2">
-					<div class=" self-center">
-						<img
-							id="logo"
-							crossorigin="anonymous"
-							src="{WEBUI_BASE_URL}/static/favicon.png"
-							class=" w-6 rounded-full"
-							alt=""
-						/>
-					</div>
-				</div>
-			</div>
-		{/if}
 	{/if}
 </div>
+
+<style>
+	#auth-page {
+		font-family: 'Archivo', 'Vazirmatn', sans-serif;
+	}
+
+	/* ---- Parallax background ---- */
+	.parallax-bg {
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		will-change: transform;
+		transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+		filter: saturate(1.06) contrast(1.03);
+	}
+
+	/* ---- Vintage warm color grade ---- */
+	.vintage-tint {
+		background: linear-gradient(
+			135deg,
+			rgba(255, 170, 92, 0.2) 0%,
+			rgba(120, 46, 28, 0.08) 45%,
+			rgba(22, 44, 78, 0.22) 100%
+		);
+		mix-blend-mode: soft-light;
+	}
+
+	/* ---- Film grain ---- */
+	.film-grain {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+		background-size: 180px 180px;
+		opacity: 0.09;
+		mix-blend-mode: overlay;
+		animation: grain 0.7s steps(3) infinite;
+	}
+
+	@keyframes grain {
+		0% {
+			transform: translate(0, 0);
+		}
+		33% {
+			transform: translate(-3%, 2%);
+		}
+		66% {
+			transform: translate(2%, -3%);
+		}
+		100% {
+			transform: translate(0, 0);
+		}
+	}
+
+	/* ---- Vignette ---- */
+	.vignette {
+		background: radial-gradient(125% 100% at 50% 42%, transparent 42%, rgba(0, 0, 0, 0.6) 100%);
+		box-shadow: inset 0 0 260px 50px rgba(0, 0, 0, 0.65);
+	}
+
+	/* ---- Vintage ornamental frame ---- */
+	.vintage-frame {
+		position: absolute;
+		inset: 18px;
+		z-index: 40;
+		pointer-events: none;
+		border: 1px solid rgba(255, 228, 196, 0.16);
+		border-radius: 0;
+		box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+		will-change: transform;
+		transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.corner {
+		position: absolute;
+		width: 26px;
+		height: 26px;
+		border: 1.5px solid rgba(255, 226, 188, 0.55);
+	}
+	.corner-tl {
+		top: -1px;
+		left: -1px;
+		border-right: none;
+		border-bottom: none;
+	}
+	.corner-tr {
+		top: -1px;
+		right: -1px;
+		border-left: none;
+		border-bottom: none;
+	}
+	.corner-bl {
+		bottom: -1px;
+		left: -1px;
+		border-right: none;
+		border-top: none;
+	}
+	.corner-br {
+		bottom: -1px;
+		right: -1px;
+		border-left: none;
+		border-top: none;
+	}
+
+	/* ---- Glassmorphism card ---- */
+	.glass-card {
+		position: relative;
+		background: linear-gradient(
+			160deg,
+			rgba(255, 255, 255, 0.12) 0%,
+			rgba(255, 255, 255, 0.04) 100%
+		);
+		backdrop-filter: blur(24px) saturate(150%);
+		-webkit-backdrop-filter: blur(24px) saturate(150%);
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		border-radius: 0;
+		box-shadow:
+			0 32px 90px -24px rgba(0, 0, 0, 0.75),
+			0 8px 32px -12px rgba(0, 0, 0, 0.5),
+			inset 0 1px 0 rgba(255, 255, 255, 0.28);
+		animation: cardIn 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+		transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+		will-change: transform;
+	}
+
+	/* top sheen */
+	.glass-card::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: 0;
+		padding: 1px;
+		background: linear-gradient(160deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 40%);
+		-webkit-mask:
+			linear-gradient(#000 0 0) content-box,
+			linear-gradient(#000 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		pointer-events: none;
+	}
+
+	@keyframes cardIn {
+		from {
+			opacity: 0;
+			transform: translateY(28px) scale(0.97);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	.brand-logo {
+		filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+	}
+
+	/* ---- Field labels ---- */
+	.field-label {
+		display: block;
+		margin-bottom: 0.4rem;
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: rgba(245, 130, 77, 0.92);
+		text-align: left;
+	}
+
+	/* ---- Glass inputs ---- */
+	:global(#auth-page .auth-input) {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		padding: 0.7rem 0.95rem;
+		background: rgba(255, 255, 255, 0.06);
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		border-radius: 0;
+		backdrop-filter: blur(6px);
+		transition:
+			border-color 0.25s ease,
+			background 0.25s ease,
+			box-shadow 0.25s ease;
+	}
+
+	:global(#auth-page .auth-input:focus-within) {
+		border-color: rgba(236, 90, 19, 0.75);
+		background: rgba(255, 255, 255, 0.1);
+		box-shadow:
+			0 0 0 3px rgba(236, 90, 19, 0.18),
+			0 0 28px -6px rgba(236, 90, 19, 0.55);
+	}
+
+	:global(#auth-page .auth-input input) {
+		color: #fff;
+	}
+
+	/* ---- RTL primary button ---- */
+	.btn-rtl {
+		position: relative;
+		overflow: hidden;
+		color: #fff;
+		font-weight: 600;
+		border-radius: 0;
+		background: linear-gradient(135deg, #f2691f 0%, #df470b 100%);
+		box-shadow:
+			0 14px 34px -10px rgba(236, 90, 19, 0.65),
+			inset 0 1px 0 rgba(255, 255, 255, 0.35);
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease,
+			filter 0.2s ease;
+	}
+
+	.btn-rtl::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -120%;
+		width: 60%;
+		height: 100%;
+		background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+		transform: skewX(-20deg);
+		transition: left 0.6s ease;
+	}
+
+	.btn-rtl:hover {
+		transform: translateY(-1px);
+		filter: brightness(1.06);
+		box-shadow:
+			0 18px 44px -10px rgba(236, 90, 19, 0.75),
+			inset 0 1px 0 rgba(255, 255, 255, 0.4);
+	}
+
+	.btn-rtl:hover::after {
+		left: 130%;
+	}
+
+	.btn-rtl:active {
+		transform: translateY(0);
+	}
+
+	/* ---- Glass OAuth buttons ---- */
+	.btn-glass {
+		color: rgba(255, 255, 255, 0.92);
+		font-weight: 500;
+		border-radius: 0;
+		background: rgba(255, 255, 255, 0.06);
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		backdrop-filter: blur(6px);
+		transition:
+			transform 0.2s ease,
+			background 0.2s ease,
+			border-color 0.2s ease;
+	}
+
+	.btn-glass:hover {
+		transform: translateY(-1px);
+		background: rgba(255, 255, 255, 0.13);
+		border-color: rgba(255, 255, 255, 0.32);
+	}
+
+	/* ---- Staggered reveal ---- */
+	.reveal {
+		opacity: 0;
+		animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	}
+
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.parallax-bg,
+		.vintage-frame,
+		.glass-card,
+		.reveal,
+		.film-grain {
+			animation: none !important;
+			transition: none !important;
+			transform: none !important;
+		}
+	}
+</style>
