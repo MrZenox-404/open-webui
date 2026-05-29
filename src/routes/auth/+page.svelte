@@ -775,7 +775,7 @@
 	}
 
 	.brand-logo {
-		filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+		filter: none;
 	}
 
 	/* ---- Field labels ---- */
@@ -807,11 +807,8 @@
 	}
 
 	:global(#auth-page .auth-input:focus-within) {
-		border-color: rgba(236, 90, 19, 0.75);
+		border-color: rgba(236, 90, 19, 0.85);
 		background: rgba(255, 255, 255, 0.1);
-		box-shadow:
-			0 0 0 3px rgba(236, 90, 19, 0.18),
-			0 0 28px -6px rgba(236, 90, 19, 0.55);
 	}
 
 	:global(#auth-page .auth-input input) {
@@ -826,9 +823,6 @@
 		font-weight: 600;
 		border-radius: 0;
 		background: linear-gradient(135deg, #f2691f 0%, #df470b 100%);
-		box-shadow:
-			0 14px 34px -10px rgba(236, 90, 19, 0.65),
-			inset 0 1px 0 rgba(255, 255, 255, 0.35);
 		transition:
 			transform 0.2s ease,
 			box-shadow 0.2s ease,
@@ -850,9 +844,6 @@
 	.btn-rtl:hover {
 		transform: translateY(-1px);
 		filter: brightness(1.06);
-		box-shadow:
-			0 18px 44px -10px rgba(236, 90, 19, 0.75),
-			inset 0 1px 0 rgba(255, 255, 255, 0.4);
 	}
 
 	.btn-rtl:hover::after {
