@@ -1680,7 +1680,7 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		transform: scale(1.12);
-		filter: blur(10px) brightness(1.08) saturate(0.85);
+		filter: blur(10px) brightness(1.6) saturate(0.8);
 		pointer-events: none;
 	}
 
@@ -1690,8 +1690,8 @@
 
 	/* Frosted glass tint sitting over the blurred photo */
 	.sidebar-glass {
-		background: rgba(255, 255, 255, 0.62);
-		border-inline-end: 1px solid rgba(255, 255, 255, 0.45);
+		background: rgba(255, 255, 255, 0.74);
+		border-inline-end: 1px solid rgba(0, 0, 0, 0.12);
 		box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.3);
 	}
 
