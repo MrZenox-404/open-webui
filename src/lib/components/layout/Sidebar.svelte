@@ -805,12 +805,12 @@
 								<img
 									src="{WEBUI_BASE_URL}/static/rtl_logo_light.svg"
 									class="sidebar-new-chat-icon size-6 object-contain dark:hidden"
-									alt="RTL Group"
+									alt="RTL Chat"
 								/>
 								<img
 									src="{WEBUI_BASE_URL}/static/rtl_logo_dark.svg"
 									class="sidebar-new-chat-icon size-6 object-contain hidden dark:block"
-									alt="RTL Group"
+									alt="RTL Chat"
 								/>
 							</div>
 
@@ -1025,19 +1025,19 @@
 						crossorigin="anonymous"
 						src="{WEBUI_BASE_URL}/static/rtl_logo_light.svg"
 						class="self-center h-10 w-auto object-contain dark:hidden"
-						alt="RTL Group"
+						alt="RTL Chat"
 					/>
 					<img
 						crossorigin="anonymous"
 						src="{WEBUI_BASE_URL}/static/rtl_logo_dark.svg"
 						class="self-center h-10 w-auto object-contain hidden dark:block"
-						alt="RTL Group"
+						alt="RTL Chat"
 					/>
 					<div
 						id="sidebar-webui-name"
 						class="self-center ml-2 text-lg font-medium text-gray-850 dark:text-white font-primary"
 					>
-						RTL Group
+						RTL Chat
 					</div>
 				</a>
 				<Tooltip
