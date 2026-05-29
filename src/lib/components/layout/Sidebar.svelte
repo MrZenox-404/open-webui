@@ -1005,7 +1005,7 @@
 		<div
 			class="sidebar-photo"
 			aria-hidden="true"
-			style="background-image: url('{WEBUI_BASE_URL}/static/rtl_sidebar.jpeg');"
+			style="background-image: url('{WEBUI_BASE_URL}/static/rtl_lu.jpg');"
 		></div>
 		<div
 			class="sidebar-glass relative my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[var(--sidebar-width)] overflow-x-hidden scrollbar-hidden z-50 {$showSidebar
