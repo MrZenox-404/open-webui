@@ -1678,7 +1678,7 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		transform: scale(1.12);
-		filter: blur(10px) brightness(1.08) saturate(0.8);
+		filter: blur(10px);
 		pointer-events: none;
 	}
 
