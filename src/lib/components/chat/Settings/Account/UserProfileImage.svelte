@@ -82,7 +82,7 @@
 <div class="flex flex-col self-start group">
 	<div class="self-center flex">
 		<button
-			class="relative rounded-full dark:bg-gray-700"
+			class="relative rounded-none dark:bg-gray-700"
 			type="button"
 			on:click={() => {
 				profileImageInputElement.click();
@@ -91,7 +91,7 @@
 			<img
 				src={profileImageUrl !== '' ? profileImageUrl : generateInitialsImage(user?.name)}
 				alt="profile"
-				class=" rounded-full {imageClassName} object-cover"
+				class=" rounded-none {imageClassName} object-cover"
 			/>
 
 			<div class="absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 transition">

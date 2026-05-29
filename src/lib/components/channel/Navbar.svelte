@@ -213,7 +213,7 @@
 								<div class=" self-center">
 									<img
 										src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-										class="size-6 object-cover rounded-full"
+										class="size-6 object-cover rounded-none"
 										alt="User profile"
 										draggable="false"
 									/>
