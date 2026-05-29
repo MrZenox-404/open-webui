@@ -1022,13 +1022,11 @@
 					on:click={newChatHandler}
 				>
 					<img
-						crossorigin="anonymous"
 						src="{WEBUI_BASE_URL}/static/rtl_logo_light.svg"
 						class="self-center h-6 w-auto object-contain dark:hidden"
 						alt="RTL Chat"
 					/>
 					<img
-						crossorigin="anonymous"
 						src="{WEBUI_BASE_URL}/static/rtl_logo_dark.svg"
 						class="self-center h-6 w-auto object-contain hidden dark:block"
 						alt="RTL Chat"
