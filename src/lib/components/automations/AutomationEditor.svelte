@@ -255,7 +255,7 @@
 
 				{#if isDirty}
 					<button
-						class="px-3 py-1 text-sm bg-brand-500 text-white dark:bg-brand-500 dark:text-white rounded-full hover:opacity-90 transition flex items-center gap-1.5"
+						class="px-3 py-1 text-sm bg-brand-500 text-white dark:bg-brand-500 dark:text-white rounded-none hover:opacity-90 transition flex items-center gap-1.5"
 						on:click={saveHandler}
 						disabled={saving}
 						type="button"
@@ -268,7 +268,7 @@
 				{/if}
 
 				<button
-					class="px-2.5 py-1 text-sm border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-850 transition rounded-full flex items-center gap-1.5"
+					class="px-2.5 py-1 text-sm border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-850 transition rounded-none flex items-center gap-1.5"
 					on:click={runNowHandler}
 					type="button"
 					disabled={loading}

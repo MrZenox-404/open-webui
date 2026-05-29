@@ -352,7 +352,7 @@
 
 					<div class="flex justify-end pt-3 text-sm font-medium">
 						<button
-							class="px-3.5 py-1.5 text-sm font-medium bg-white hover:bg-gray-100 text-black dark:bg-black dark:text-white dark:hover:bg-gray-900 transition rounded-full"
+							class="px-3.5 py-1.5 text-sm font-medium bg-white hover:bg-gray-100 text-black dark:bg-black dark:text-white dark:hover:bg-gray-900 transition rounded-none"
 							type="button"
 							on:click={() => {
 								show = false;
@@ -362,7 +362,7 @@
 						</button>
 
 						<button
-							class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-full"
+							class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-none"
 							type="submit"
 						>
 							{$i18n.t('Save')}

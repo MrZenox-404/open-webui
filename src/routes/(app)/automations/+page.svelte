@@ -298,7 +298,7 @@
 
 					<div class="px-3 flex w-full bg-transparent overflow-x-auto scrollbar-none -mx-1">
 						<div
-							class="flex gap-0.5 w-fit text-center text-sm rounded-full bg-transparent px-1.5 whitespace-nowrap"
+							class="flex gap-0.5 w-fit text-center text-sm rounded-none bg-transparent px-1.5 whitespace-nowrap"
 						>
 							<Select
 								bind:value={statusFilter}

@@ -350,7 +350,7 @@
 			}}
 		>
 			<div
-				class="flex gap-0.5 w-fit text-center text-sm rounded-full bg-transparent px-1.5 whitespace-nowrap"
+				class="flex gap-0.5 w-fit text-center text-sm rounded-none bg-transparent px-1.5 whitespace-nowrap"
 				bind:this={tagsContainerElement}
 			>
 				<ViewSelector

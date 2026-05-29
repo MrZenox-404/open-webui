@@ -881,7 +881,7 @@
 						{#if knowledge?.write_access}
 							<div class="self-center shrink-0">
 								<button
-									class="bg-gray-50 hover:bg-gray-100 text-black dark:bg-gray-850 dark:hover:bg-gray-800 dark:text-white transition px-2 py-1 rounded-full flex gap-1 items-center"
+									class="bg-gray-50 hover:bg-gray-100 text-black dark:bg-gray-850 dark:hover:bg-gray-800 dark:text-white transition px-2 py-1 rounded-none flex gap-1 items-center"
 									type="button"
 									on:click={() => {
 										showAccessControlModal = true;
@@ -970,7 +970,7 @@
 					}}
 				>
 					<div
-						class="flex gap-3 w-fit text-center text-sm rounded-full bg-transparent px-0.5 whitespace-nowrap"
+						class="flex gap-3 w-fit text-center text-sm rounded-none bg-transparent px-0.5 whitespace-nowrap"
 					>
 						<DropdownOptions
 							align="start"

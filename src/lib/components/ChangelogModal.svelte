@@ -101,7 +101,7 @@
 		<div class="flex justify-end pt-3 text-sm font-medium">
 			<button
 				on:click={closeModal}
-				class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-full"
+				class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-none"
 			>
 				<span class="relative">{$i18n.t("Okay, Let's Go!")}</span>
 			</button>

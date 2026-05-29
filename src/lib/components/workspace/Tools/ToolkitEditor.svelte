@@ -253,7 +253,7 @@ class Tools:
 
 						<div class="self-center shrink-0">
 							<button
-								class="bg-gray-50 hover:bg-gray-100 text-black dark:bg-gray-850 dark:hover:bg-gray-800 dark:text-white transition px-2 py-1 rounded-full flex gap-1 items-center"
+								class="bg-gray-50 hover:bg-gray-100 text-black dark:bg-gray-850 dark:hover:bg-gray-800 dark:text-white transition px-2 py-1 rounded-none flex gap-1 items-center"
 								type="button"
 								on:click={() => {
 									showAccessControlModal = true;
@@ -333,7 +333,7 @@ class Tools:
 					</div>
 
 					<button
-						class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-full"
+						class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-none"
 						type="submit"
 					>
 						{$i18n.t('Save')}

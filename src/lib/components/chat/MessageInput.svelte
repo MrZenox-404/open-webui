@@ -1885,7 +1885,7 @@
 														window.open(authUrl, '_self', 'noopener');
 													}}
 													type="button"
-													class="group px-2 py-[5px] flex gap-1.5 items-center text-xs rounded-full transition-colors duration-300 focus:outline-hidden max-w-full overflow-hidden
+													class="group px-2 py-[5px] flex gap-1.5 items-center text-xs rounded-none transition-colors duration-300 focus:outline-hidden max-w-full overflow-hidden
 														text-amber-600 dark:text-amber-400 bg-amber-50 hover:bg-amber-100 dark:bg-amber-400/10 dark:hover:bg-amber-600/10 border border-amber-200/40 dark:border-amber-500/20"
 												>
 													<Wrench className="size-3.5" strokeWidth="1.75" />
@@ -2004,7 +2004,7 @@
 												<!-- {$i18n.t('Call')} -->
 												<Tooltip content={$i18n.t('Voice mode')}>
 													<button
-														class=" bg-brand-500 text-white hover:bg-brand-600 dark:bg-brand-500 dark:text-white dark:hover:bg-brand-600 transition rounded-full p-1.5 self-center"
+														class=" bg-brand-500 text-white hover:bg-brand-600 dark:bg-brand-500 dark:text-white dark:hover:bg-brand-600 transition rounded-none p-1.5 self-center"
 														type="button"
 														on:click={async () => {
 															if (selectedModels.length > 1) {
@@ -2073,7 +2073,7 @@
 														id="send-message-button"
 														class="{!(prompt === '' && files.length === 0) || uploadPending
 															? 'bg-brand-500 text-white hover:bg-brand-600 dark:bg-brand-500 dark:text-white dark:hover:bg-brand-600 '
-															: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-full p-1.5 self-center"
+															: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-none p-1.5 self-center"
 														type="submit"
 														disabled={(prompt === '' && files.length === 0) || uploadPending}
 													>

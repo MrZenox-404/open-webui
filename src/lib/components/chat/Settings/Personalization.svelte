@@ -41,7 +41,7 @@
 					<div class="flex items-center gap-2 text-sm font-medium">
 						{$i18n.t('Memory')}
 						<span
-							class="text-[0.65rem] font-medium uppercase px-1.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+							class="text-[0.65rem] font-medium uppercase px-1.5 py-0.5 rounded-none bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
 							>{$i18n.t('Experimental')}</span
 						>
 					</div>
@@ -90,7 +90,7 @@
 
 	<div class="flex justify-end text-sm font-medium">
 		<button
-			class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-full"
+			class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-none"
 			type="submit"
 		>
 			{$i18n.t('Save')}

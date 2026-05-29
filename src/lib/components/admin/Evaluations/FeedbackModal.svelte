@@ -121,7 +121,7 @@
 							<div class="mb-2 -mx-1">
 								<div class="flex flex-wrap gap-1 mt-1">
 									{#each selectedFeedback?.data?.tags as tag}
-										<span class="px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-850 text-[9px]"
+										<span class="px-2 py-0.5 rounded-none bg-gray-100 dark:bg-gray-850 text-[9px]"
 											>{tag}</span
 										>
 									{/each}
@@ -131,7 +131,7 @@
 
 						<div class="flex justify-end pt-2">
 							<button
-								class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-full"
+								class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition rounded-none"
 								type="button"
 								on:click={close}
 							>

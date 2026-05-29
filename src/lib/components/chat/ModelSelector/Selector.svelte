@@ -605,7 +605,7 @@
 								}}
 							>
 								<div
-									class="flex gap-1 w-fit text-center text-sm rounded-full bg-transparent px-1.5 whitespace-nowrap"
+									class="flex gap-1 w-fit text-center text-sm rounded-none bg-transparent px-1.5 whitespace-nowrap"
 									bind:this={tagsContainerElement}
 								>
 									{#if items.find((item) => item.model?.connection_type === 'local') || items.find((item) => item.model?.connection_type === 'external') || items.find((item) => item.model?.direct) || tags.length > 0}

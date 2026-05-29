@@ -297,7 +297,7 @@
 
 			{#if message?.is_pinned}
 				<div class="flex {showUserProfile ? 'mb-0.5' : 'mt-0.5'}">
-					<div class="ml-8.5 flex items-center gap-1 px-1 rounded-full text-xs">
+					<div class="ml-8.5 flex items-center gap-1 px-1 rounded-none text-xs">
 						<Pin className="size-3 text-yellow-500 dark:text-yellow-300" />
 						<span class="text-gray-500">{$i18n.t('Pinned')}</span>
 					</div>
