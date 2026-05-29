@@ -960,7 +960,7 @@
 								<div class="self-center relative">
 									<img
 										src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-										class=" size-7 object-cover rounded-full"
+										class=" size-7 object-cover rounded-none"
 										alt={$i18n.t('Open User Profile Menu')}
 										aria-label={$i18n.t('Open User Profile Menu')}
 									/>
@@ -1628,7 +1628,7 @@
 								<div class=" self-center mr-3 relative">
 									<img
 										src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-										class=" size-7 object-cover rounded-full"
+										class=" size-7 object-cover rounded-none"
 										alt={$i18n.t('Open User Profile Menu')}
 										aria-label={$i18n.t('Open User Profile Menu')}
 									/>
