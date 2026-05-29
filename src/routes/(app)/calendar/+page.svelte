@@ -331,7 +331,7 @@
 						</Select>
 
 						<button
-							class="ml-1 px-2 py-1.5 text-xs gap-1 rounded-xl bg-black text-white dark:bg-white dark:text-black transition text-sm flex items-center"
+							class="ml-1 px-2 py-1.5 text-xs gap-1 rounded-xl bg-brand-500 text-white dark:bg-brand-500 dark:text-white transition text-sm flex items-center"
 							on:click={handleNewEvent}
 						>
 							<svg

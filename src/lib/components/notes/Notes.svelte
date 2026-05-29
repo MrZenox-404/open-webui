@@ -352,7 +352,7 @@
 
 				<div class="flex w-full justify-end gap-1.5">
 					<button
-						class=" px-2 py-1.5 rounded-xl bg-black text-white dark:bg-white dark:text-black transition font-medium text-sm flex items-center"
+						class=" px-2 py-1.5 rounded-xl bg-brand-500 text-white dark:bg-brand-500 dark:text-white transition font-medium text-sm flex items-center"
 						on:click={async () => {
 							const res = await createNoteHandler(dayjs().format('YYYY-MM-DD'));
 

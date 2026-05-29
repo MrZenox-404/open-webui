@@ -172,7 +172,7 @@
 						{cancelLabel}
 					</button>
 					<button
-						class="text-sm bg-gray-900 hover:bg-gray-850 text-gray-100 dark:bg-gray-100 dark:hover:bg-white dark:text-gray-800 font-medium w-full py-2 rounded-3xl transition"
+						class="text-sm bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white font-medium w-full py-2 rounded-3xl transition"
 						on:click={() => {
 							confirmHandler();
 						}}

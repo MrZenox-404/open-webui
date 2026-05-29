@@ -454,7 +454,7 @@
 					</button>
 
 					<button
-						class="flex text-xs items-center space-x-1 px-3 py-1.5 rounded-xl bg-black hover:bg-gray-900 text-white dark:bg-white dark:hover:bg-gray-100 dark:text-black transition font-medium"
+						class="flex text-xs items-center space-x-1 px-3 py-1.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition font-medium"
 						type="button"
 						on:click={() => {
 							showConfigModal = true;

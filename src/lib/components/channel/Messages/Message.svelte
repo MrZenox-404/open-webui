@@ -507,7 +507,7 @@
 
 									<button
 										id="confirm-edit-message-button"
-										class="px-3.5 py-1.5 bg-gray-900 dark:bg-white hover:bg-gray-850 text-gray-100 dark:text-gray-800 transition rounded-3xl"
+										class="px-3.5 py-1.5 bg-brand-500 dark:bg-brand-500 hover:bg-brand-600 dark:hover:bg-brand-600 text-white dark:text-white transition rounded-3xl"
 										on:click={async () => {
 											onEdit(editedContent);
 											edit = false;

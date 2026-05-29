@@ -359,7 +359,7 @@
 					<button
 						class="text-sm px-4 py-2 transition rounded-full {loading
 							? 'cursor-not-allowed bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400'
-							: 'bg-black hover:bg-gray-900 text-white dark:bg-white dark:hover:bg-gray-100 dark:text-black'} flex justify-center"
+							: 'bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white'} flex justify-center"
 						type="submit"
 						disabled={loading}
 					>
@@ -406,7 +406,7 @@
 				<div class="flex items-center gap-2 shrink-0 justify-end">
 					{#if !disabled}
 						<button
-							class="px-4 py-1 text-sm font-medium bg-black text-white dark:bg-white dark:text-black rounded-full hover:opacity-90 transition shadow-xs"
+							class="px-4 py-1 text-sm font-medium bg-brand-500 text-white dark:bg-brand-500 dark:text-white rounded-full hover:opacity-90 transition shadow-xs"
 							on:click={() => (showEditModal = true)}
 						>
 							{$i18n.t('Edit')}
@@ -608,7 +608,7 @@
 
 			<div class="my-4 flex justify-end pb-20">
 				<button
-					class="text-sm w-full lg:w-fit px-4 py-2 transition rounded-xl bg-black hover:bg-gray-900 text-white dark:bg-white dark:hover:bg-gray-100 dark:text-black flex w-full justify-center"
+					class="text-sm w-full lg:w-fit px-4 py-2 transition rounded-xl bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white flex w-full justify-center"
 					type="submit"
 					disabled={loading}
 				>

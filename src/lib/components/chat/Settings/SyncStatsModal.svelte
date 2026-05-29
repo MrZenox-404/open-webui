@@ -327,7 +327,7 @@
 
 				<div class="flex justify-end">
 					<button
-						class="flex items-center justify-center gap-2 rounded-full bg-black px-4 py-2 text-sm text-white transition hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100"
+						class="flex items-center justify-center gap-2 rounded-full bg-brand-500 px-4 py-2 text-sm text-white transition hover:bg-brand-600 dark:bg-brand-500 dark:text-white dark:hover:bg-brand-600"
 						on:click={closeModal}
 					>
 						{$i18n.t('Done')}
@@ -343,7 +343,7 @@
 
 				<div class="flex justify-end">
 					<button
-						class="flex items-center justify-center gap-2 rounded-full bg-black px-4 py-2 text-sm text-white transition hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100"
+						class="flex items-center justify-center gap-2 rounded-full bg-brand-500 px-4 py-2 text-sm text-white transition hover:bg-brand-600 dark:bg-brand-500 dark:text-white dark:hover:bg-brand-600"
 						on:click={() => {
 							error = false;
 							errorMessage = '';
@@ -478,7 +478,7 @@
 					</button>
 
 					<button
-						class="px-3.5 py-1.5 text-sm font-medium bg-black hover:bg-gray-900 text-white dark:bg-white dark:text-black dark:hover:bg-gray-100 transition-colors rounded-full"
+						class="px-3.5 py-1.5 text-sm font-medium bg-brand-500 hover:bg-brand-600 text-white dark:bg-brand-500 dark:hover:bg-brand-600 dark:text-white transition-colors rounded-full"
 						on:click={syncStats}
 						disabled={syncing}
 					>

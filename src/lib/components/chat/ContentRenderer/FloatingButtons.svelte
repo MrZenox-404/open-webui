@@ -145,7 +145,7 @@
 				<button
 					aria-label={$i18n.t('Submit question')}
 					class="{floatingInputValue !== ''
-						? 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 '
+						? 'bg-brand-500 text-white hover:bg-brand-600 dark:bg-brand-500 dark:text-white dark:hover:bg-brand-600 '
 						: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-full p-1.5 m-0.5 self-center"
 					on:click={() => {
 						actionHandler(selectedAction?.id);

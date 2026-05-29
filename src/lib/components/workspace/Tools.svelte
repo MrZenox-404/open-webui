@@ -292,7 +292,7 @@
 						}}
 					>
 						<div
-							class="cursor-pointer px-2 py-1.5 rounded-xl bg-black text-white dark:bg-white dark:text-black transition font-medium text-sm flex items-center"
+							class="cursor-pointer px-2 py-1.5 rounded-xl bg-brand-500 text-white dark:bg-brand-500 dark:text-white transition font-medium text-sm flex items-center"
 						>
 							<Plus className="size-3" strokeWidth="2.5" />
 
@@ -301,7 +301,7 @@
 					</AddToolMenu>
 				{:else}
 					<a
-						class=" px-2 py-1.5 rounded-xl bg-black text-white dark:bg-white dark:text-black transition font-medium text-sm flex items-center"
+						class=" px-2 py-1.5 rounded-xl bg-brand-500 text-white dark:bg-brand-500 dark:text-white transition font-medium text-sm flex items-center"
 						href="/workspace/tools/create"
 					>
 						<Plus className="size-3" strokeWidth="2.5" />
