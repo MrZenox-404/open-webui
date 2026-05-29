@@ -1680,12 +1680,12 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		transform: scale(1.12);
-		filter: blur(18px) brightness(1.08) saturate(0.85);
+		filter: blur(10px) brightness(1.08) saturate(0.85);
 		pointer-events: none;
 	}
 
 	:global(.dark) .sidebar-photo {
-		filter: blur(18px) brightness(0.5) saturate(1.05);
+		filter: blur(10px) brightness(0.5) saturate(1.05);
 	}
 
 	/* Frosted glass tint sitting over the blurred photo */
