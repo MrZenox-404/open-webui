@@ -481,7 +481,7 @@ input[type='number'] {
 	border-radius: 0.4rem;
 	box-decoration-break: clone;
 	padding: 0.1rem 0.3rem;
-	@apply text-sky-800 dark:text-sky-200 bg-sky-300/15 dark:bg-sky-500/15;
+	@apply text-brand-700 dark:text-brand-400 bg-brand-500/15 dark:bg-brand-500/15;
 }
 
 .mention::after {
@@ -492,7 +492,7 @@ input[type='number'] {
 	border-radius: 0.4rem;
 	box-decoration-break: clone;
 	padding: 0.1rem 0.3rem;
-	@apply text-sky-800 dark:text-sky-200 bg-sky-300/15 dark:bg-sky-500/15;
+	@apply text-brand-700 dark:text-brand-400 bg-brand-500/15 dark:bg-brand-500/15;
 }
 
 .tiptap .suggestion::after {

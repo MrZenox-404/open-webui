@@ -135,9 +135,9 @@
 <li class="group">
 	<div
 		class="w-full flex items-center transition
-			{selected ? 'bg-blue-50 dark:bg-blue-900/20' : 'hover:bg-gray-50 dark:hover:bg-gray-800'}
+			{selected ? 'bg-brand-500/10 dark:bg-brand-500/20' : 'hover:bg-gray-50 dark:hover:bg-gray-800'}
 			{dragOverFolder
-			? 'bg-blue-50 dark:bg-blue-900/30 ring-1 ring-blue-400 dark:ring-blue-500 ring-inset'
+			? 'bg-brand-500/10 dark:bg-brand-500/20 ring-1 ring-brand-400 dark:ring-brand-500 ring-inset'
 			: ''}"
 		role={entry.type === 'directory' ? 'button' : undefined}
 		on:dragover={(e) => {
@@ -220,7 +220,7 @@
 				<div
 					class="size-3.5 shrink-0 rounded border transition-colors flex items-center justify-center
 						{selected
-						? 'bg-blue-500 dark:bg-blue-600 border-blue-500 dark:border-blue-600 text-white'
+						? 'bg-brand-500 dark:bg-brand-600 border-brand-500 dark:border-brand-600 text-white'
 						: 'border-gray-300 dark:border-gray-600'}"
 				>
 					{#if selected}
@@ -262,7 +262,7 @@
 				<input
 					bind:this={renameInput}
 					bind:value={renameValue}
-					class="flex-1 text-xs bg-transparent border border-gray-200 dark:border-gray-700 rounded px-1.5 py-0.5 outline-none focus:border-blue-400 dark:focus:border-blue-500 text-gray-800 dark:text-gray-200 min-w-0"
+					class="flex-1 text-xs bg-transparent border border-gray-200 dark:border-gray-700 rounded px-1.5 py-0.5 outline-none focus:border-brand-400 dark:focus:border-brand-500 text-gray-800 dark:text-gray-200 min-w-0"
 					on:keydown={(e) => {
 						if (e.key === 'Enter') {
 							e.preventDefault();
