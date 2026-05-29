@@ -16,11 +16,11 @@
 	--color-gray-900: oklch(0.2 0 0);
 	--color-gray-950: oklch(0.16 0 0);
 
-	/* Brand (orange) — RTL accent, matches login page */
-	--color-brand-400: #f5824d;
-	--color-brand-500: #f2691f;
-	--color-brand-600: #df470b;
-	--color-brand-700: #c23d08;
+	/* Brand (red) — RTL accent #EA1C22 */
+	--color-brand-400: #f15a5e;
+	--color-brand-500: #ea1c22;
+	--color-brand-600: #c8161b;
+	--color-brand-700: #a11216;
 
 	/* Square corners — rounded-full stays round (avatars, toggles, dots) */
 	--radius-xs: 0;

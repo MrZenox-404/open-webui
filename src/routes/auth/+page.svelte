@@ -309,7 +309,7 @@
 
 								{#if $config?.onboarding ?? false}
 									<div
-										class="mb-1 text-xs font-medium text-amber-100/60 text-left reveal"
+										class="mb-1 text-xs font-medium text-white/55 text-left reveal"
 										style="animation-delay: 120ms;"
 									>
 										ⓘ {$WEBUI_NAME}
@@ -433,7 +433,7 @@
 														: $i18n.t('Already have an account?')}
 
 													<button
-														class="font-medium text-[#f5824d] hover:text-[#f2691f] transition underline-offset-4 hover:underline"
+														class="font-medium text-[#f15a5e] hover:text-[#ea1c22] transition underline-offset-4 hover:underline"
 														type="button"
 														on:click={() => {
 															if (mode === 'signin') {
@@ -786,7 +786,7 @@
 		font-weight: 600;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
-		color: rgba(245, 130, 77, 0.92);
+		color: rgba(241, 90, 94, 0.95);
 		text-align: left;
 	}
 
@@ -807,7 +807,7 @@
 	}
 
 	:global(#auth-page .auth-input:focus-within) {
-		border-color: rgba(236, 90, 19, 0.85);
+		border-color: rgba(234, 28, 34, 0.85);
 		background: rgba(255, 255, 255, 0.1);
 	}
 
@@ -822,7 +822,7 @@
 		color: #fff;
 		font-weight: 600;
 		border-radius: 0;
-		background: linear-gradient(135deg, #f2691f 0%, #df470b 100%);
+		background: linear-gradient(135deg, #ea1c22 0%, #c8161b 100%);
 		transition:
 			transform 0.2s ease,
 			box-shadow 0.2s ease,
