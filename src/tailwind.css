@@ -107,3 +107,40 @@
 }
 
 @custom-variant hover (&:hover);
+
+/*
+  Border contrast boost
+  ─────────────────────
+  Open WebUI's stock design uses very light borders (gray-50/100, often at
+  30% opacity in light mode; gray-800/850/900 and low-opacity variants in
+  dark mode) that visually vanish, making input fields and panels hard to
+  see. We remap only the faint *border* utilities to clearly visible shades
+  — gray-300 in light, gray-700 in dark. These rules are intentionally
+  unlayered so they override Tailwind's layered utilities; background fills
+  (bg-gray-*) are untouched, so only borders get stronger.
+*/
+
+/* Light mode: faint borders → gray-300.
+   Gated to html:not(.dark) so these unlayered rules don't leak into dark
+   mode and override the dark border utilities we intentionally leave alone. */
+html:not(.dark) :is(.border-gray-50, .border-gray-50\/30, .border-gray-50\/50, .border-gray-100, .border-gray-100\/15, .border-gray-100\/20, .border-gray-100\/30, .border-gray-100\/50, .border-gray-200) {
+	border-color: var(--color-gray-300);
+}
+
+/* Dark mode: faint borders → gray-700 */
+.dark .dark\:border-gray-700\/10,
+.dark .dark\:border-gray-700\/20,
+.dark .dark\:border-gray-700\/40,
+.dark .dark\:border-gray-700\/60,
+.dark .dark\:border-gray-800,
+.dark .dark\:border-gray-800\/10,
+.dark .dark\:border-gray-800\/30,
+.dark .dark\:border-gray-800\/50,
+.dark .dark\:border-gray-850,
+.dark .dark\:border-gray-850\/15,
+.dark .dark\:border-gray-850\/20,
+.dark .dark\:border-gray-850\/30,
+.dark .dark\:border-gray-850\/50,
+.dark .dark\:border-gray-900 {
+	border-color: var(--color-gray-700);
+}
