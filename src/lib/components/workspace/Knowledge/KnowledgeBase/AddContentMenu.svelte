@@ -32,6 +32,7 @@
 	<Tooltip content={$i18n.t('Add Content')}>
 		<button
 			class=" p-1.5 rounded-xl hover:bg-gray-100 dark:bg-gray-850 dark:hover:bg-gray-800 transition font-medium text-sm flex items-center space-x-1"
+			data-tutorial="kb-add-content"
 			on:click={(e) => {
 				e.stopPropagation();
 				show = true;
@@ -56,6 +57,7 @@
 		>
 			<button
 				class="select-none flex gap-2 items-center px-3 py-1.5 text-sm cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl w-full"
+				data-tutorial="kb-upload-files"
 				on:click={() => {
 					onUpload({ type: 'files' });
 				}}

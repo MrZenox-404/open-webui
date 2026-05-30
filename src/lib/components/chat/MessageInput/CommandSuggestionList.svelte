@@ -4,6 +4,7 @@
 	import Models from './Commands/Models.svelte';
 	import Skills from './Commands/Skills.svelte';
 	import Emojis from './Commands/Emojis.svelte';
+	import { emitTutorialSignal } from '$lib/tutorials/signals';
 
 	export let char = '';
 	export let query = '';
@@ -87,6 +88,7 @@
 							type: 'file',
 							data: data
 						});
+						emitTutorialSignal('chat.kb.attached'); // tutorial: knowledge attached via #
 					} else if (type === 'web') {
 						insertTextHandler('');
 

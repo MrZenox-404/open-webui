@@ -111,6 +111,7 @@
 							tippyOptions={{ duration: [500, 0] }}
 						>
 							<a
+								data-tutorial="citation-file-link"
 								class="hover:text-gray-500 dark:hover:text-gray-100 underline grow line-clamp-1"
 								href={document?.metadata?.file_id
 									? `${WEBUI_API_BASE_URL}/files/${document?.metadata?.file_id}/content${document?.metadata?.page !== undefined ? `#page=${document.metadata.page + 1}` : ''}`
@@ -184,7 +185,7 @@
 										placement="top-start"
 										tippyOptions={{ duration: [500, 0] }}
 									>
-										<div class="text-sm my-1 dark:text-gray-400 flex items-center gap-2 w-fit">
+										<div data-tutorial="citation-relevance" class="text-sm my-1 dark:text-gray-400 flex items-center gap-2 w-fit">
 											{#if showPercentage}
 												{@const percentage = calculatePercentage(document.distance)}
 
@@ -205,7 +206,7 @@
 								{/if}
 
 								{#if Number.isInteger(document?.metadata?.page)}
-									<span class="text-sm text-gray-500 dark:text-gray-400">
+									<span data-tutorial="citation-page" class="text-sm text-gray-500 dark:text-gray-400">
 										({$i18n.t('page')}
 										{document.metadata.page + 1})
 									</span>
@@ -230,6 +231,7 @@
 									!expandedDocs.has(documentIdx)}
 								{#if $settings?.renderMarkdownInPreviews ?? true}
 									<div
+										data-tutorial="citation-excerpt"
 										class="text-sm prose dark:prose-invert markdown-prose-sm min-w-full max-w-full"
 									>
 										<Markdown

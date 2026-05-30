@@ -50,7 +50,7 @@
 	}
 </script>
 
-<div class="flex flex-col w-full items-start">
+<div class="flex flex-col w-full items-start" data-tutorial="model-selector">
 	{#each selectedModels as selectedModel, selectedModelIdx}
 		<div class="flex w-full max-w-fit">
 			<div class="overflow-hidden w-full">

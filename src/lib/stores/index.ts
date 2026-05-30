@@ -98,6 +98,14 @@ export const showArchivedChats = writable(false);
 export const showChangelog = writable(false);
 
 export const showControls = writable(false);
+
+// Interactive tutorial state (see src/lib/tutorials)
+export const tutorial = writable<{ tourId: string | null; stepIndex: number; active: boolean }>({
+	tourId: null,
+	stepIndex: 0,
+	active: false
+});
+
 export const showEmbeds = writable(false);
 export const showOverview = writable(false);
 export const showArtifacts = writable(false);

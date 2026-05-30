@@ -2,6 +2,7 @@
 	import { v4 as uuidv4 } from 'uuid';
 	import { toast } from 'svelte-sonner';
 	import { PaneGroup, Pane, PaneResizer } from 'paneforge';
+	import { emitTutorialSignal } from '$lib/tutorials/signals';
 
 	import { getContext, onDestroy, onMount, tick } from 'svelte';
 	import { fade } from 'svelte/transition';
@@ -2040,6 +2041,7 @@
 		files = [];
 		messageInput?.setText('');
 
+		emitTutorialSignal('chat.submitted'); // tutorial: message sent
 		await submitPrompt(userPrompt, _files);
 	};
 

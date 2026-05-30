@@ -84,8 +84,9 @@
 
 					<div class="w-full mt-1">
 						<input
-							class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
+							class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden border border-gray-300 dark:border-gray-700"
 							type="text"
+							data-tutorial="kb-name"
 							bind:value={name}
 							placeholder={$i18n.t('Name your knowledge base')}
 							required
@@ -98,8 +99,9 @@
 
 					<div class=" w-full mt-1">
 						<textarea
-							class="w-full resize-none rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
+							class="w-full resize-none rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden border border-gray-300 dark:border-gray-700"
 							rows="4"
+							data-tutorial="kb-description"
 							bind:value={description}
 							placeholder={$i18n.t('Describe your knowledge base and objectives')}
 							required
@@ -109,7 +111,7 @@
 			</div>
 		</div>
 
-		<div class="mt-2">
+		<div class="mt-2" data-tutorial="kb-access">
 			<AccessControl
 				bind:accessGrants
 				accessRoles={['read', 'write']}
@@ -125,8 +127,9 @@
 				<button
 					class=" text-sm px-4 py-2 transition rounded-lg {loading
 						? ' cursor-not-allowed bg-gray-100 dark:bg-gray-800'
-						: ' bg-gray-50 hover:bg-gray-100 dark:bg-gray-850 dark:hover:bg-gray-800'} flex"
+						: ' bg-brand-500 text-white hover:bg-brand-600'} flex"
 					type="submit"
+					data-tutorial="kb-create"
 					disabled={loading}
 				>
 					<div class=" self-center font-medium">{$i18n.t('Create Knowledge')}</div>

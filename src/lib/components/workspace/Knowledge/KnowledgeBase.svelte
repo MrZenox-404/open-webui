@@ -43,6 +43,7 @@
 	import AddFilesPlaceholder from '$lib/components/AddFilesPlaceholder.svelte';
 
 	import AddContentMenu from './KnowledgeBase/AddContentMenu.svelte';
+	import { emitTutorialSignal } from '$lib/tutorials/signals';
 	import AddTextContentModal from './KnowledgeBase/AddTextContentModal.svelte';
 
 	import SyncConfirmDialog from '../../common/ConfirmDialog.svelte';
@@ -539,6 +540,7 @@
 		if (res) {
 			toast.success($i18n.t('File added successfully.'));
 			init();
+			emitTutorialSignal('kb.file.processed'); // tutorial: document embedded
 		} else {
 			toast.error($i18n.t('Failed to add file.'));
 			fileItems = fileItems.filter((file) => file.id !== fileId);
@@ -920,6 +922,7 @@
 
 		<div
 			class="mt-2 mb-2.5 py-2 -mx-0 bg-white dark:bg-gray-900 rounded-3xl border border-gray-100/30 dark:border-gray-850/30 flex-1"
+			data-tutorial="kb-files-panel"
 		>
 			<div class="px-3.5 flex flex-1 items-center w-full space-x-2 py-0.5 pb-2">
 				<div class="flex flex-1 items-center">

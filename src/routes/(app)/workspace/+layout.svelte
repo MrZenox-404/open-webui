@@ -98,6 +98,7 @@
 						{#if $user?.role === 'admin' || $user?.permissions?.workspace?.knowledge}
 							<a
 								draggable="false"
+								data-tutorial="kb-tab"
 								aria-current={$page.url.pathname.includes('/workspace/knowledge') ? 'page' : null}
 								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/knowledge')
 									? ''

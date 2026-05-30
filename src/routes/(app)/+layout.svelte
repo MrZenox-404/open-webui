@@ -14,6 +14,7 @@
 	import { getBanners } from '$lib/apis/configs';
 	import { getTerminalServers } from '$lib/apis/terminal';
 	import { getUserSettings } from '$lib/apis/users';
+	import { startTutorial, hasSeenTutorial } from '$lib/tutorials/controller';
 
 	import { WEBUI_VERSION, WEBUI_API_BASE_URL } from '$lib/constants';
 	import { compareVersion } from '$lib/utils';
@@ -213,6 +214,12 @@
 				]);
 			}).catch((e) => console.error('Failed to load user settings:', e))
 		]);
+
+		// Auto-launch the interactive tutorial once for users who haven't seen it.
+		// Only on the new-chat home so its first anchors (model selector, input) exist.
+		if (window.location.pathname === '/' && !hasSeenTutorial()) {
+			startTutorial('rag');
+		}
 
 		// Helper function to check if the pressed keys match the shortcut definition
 		const isShortcutMatch = (event: KeyboardEvent, shortcut): boolean => {

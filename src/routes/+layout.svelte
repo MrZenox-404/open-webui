@@ -3,6 +3,7 @@
 	import { spring } from 'svelte/motion';
 	import PyodideWorker from '$lib/workers/pyodide.worker?worker';
 	import { Toaster, toast } from 'svelte-sonner';
+	import TutorialOverlay from '$lib/components/tutorial/TutorialOverlay.svelte';
 
 	let loadingProgress = spring(0, {
 		stiffness: 0.05
@@ -1183,3 +1184,5 @@
 	position="top-right"
 	closeButton
 />
+
+<TutorialOverlay />
