@@ -641,7 +641,7 @@
 					<div class="flex w-full">
 						<div class="flex-1 mr-2">
 							<input
-								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
+								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden border border-gray-300 dark:border-gray-700"
 								placeholder={$i18n.t('Enter model tag (e.g. {{modelTag}})', {
 									modelTag: 'mistral:7b'
 								})}
@@ -855,7 +855,7 @@
 					<div class="flex w-full">
 						<div class="flex-1 mr-2 flex flex-col gap-2">
 							<input
-								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
+								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden border border-gray-300 dark:border-gray-700"
 								placeholder={$i18n.t('Enter model tag (e.g. {{modelTag}})', {
 									modelTag: 'my-modelfile'
 								})}
@@ -865,7 +865,7 @@
 
 							<textarea
 								bind:value={createModelObject}
-								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-100 dark:bg-gray-850 outline-hidden resize-none scrollbar-hidden"
+								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-100 dark:bg-gray-850 outline-hidden resize-none scrollbar-hidden border border-gray-300 dark:border-gray-700"
 								rows="6"
 								placeholder={`e.g. {"model": "my-modelfile", "from": "ollama:7b"})`}
 								disabled={createModelLoading}
@@ -1003,7 +1003,7 @@
 											class="w-full rounded-lg text-left py-2 px-4 bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden {modelFileUrl !==
 											''
 												? 'mr-2'
-												: ''}"
+												: ''} border border-gray-300 dark:border-gray-700"
 											type="url"
 											required
 											bind:value={modelFileUrl}
@@ -1078,7 +1078,7 @@
 									</div>
 									<textarea
 										bind:value={modelFileContent}
-										class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-100 dark:bg-gray-850 outline-hidden resize-none"
+										class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-100 dark:bg-gray-850 outline-hidden resize-none border border-gray-300 dark:border-gray-700"
 										rows="6"
 									/>
 								</div>

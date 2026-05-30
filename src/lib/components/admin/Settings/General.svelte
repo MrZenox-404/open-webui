@@ -358,7 +358,7 @@
 
 							<div class="flex mt-2 space-x-2">
 								<input
-									class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
+									class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden border border-gray-300 dark:border-gray-700"
 									type="email"
 									placeholder={$i18n.t('Leave empty to use first admin user')}
 									bind:value={adminConfig.ADMIN_EMAIL}
@@ -439,7 +439,7 @@
 
 						<div class="flex mt-2 space-x-2">
 							<input
-								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
+								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden border border-gray-300 dark:border-gray-700"
 								type="text"
 								placeholder={`e.g.) "30m","1h", "10d". `}
 								bind:value={adminConfig.JWT_EXPIRES_IN}
@@ -726,7 +726,7 @@
 
 							<div class="flex mt-2 space-x-2">
 								<input
-									class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
+									class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden border border-gray-300 dark:border-gray-700"
 									type="number"
 									min="0"
 									placeholder={$i18n.t('Leave empty for unlimited')}
@@ -813,7 +813,7 @@
 
 						<div class="flex mt-2 space-x-2">
 							<input
-								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
+								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden border border-gray-300 dark:border-gray-700"
 								type="text"
 								placeholder={`e.g.) "http://localhost:3000"`}
 								bind:value={adminConfig.WEBUI_URL}
@@ -834,7 +834,7 @@
 
 						<div class="flex mt-2 space-x-2">
 							<input
-								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
+								class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden border border-gray-300 dark:border-gray-700"
 								type="text"
 								placeholder={`https://example.com/webhook`}
 								bind:value={webhookUrl}
