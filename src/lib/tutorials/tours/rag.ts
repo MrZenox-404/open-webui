@@ -22,7 +22,7 @@ export const ragTour: Tutorial = {
 		},
 		{
 			id: 'message-input',
-			anchor: '#chat-input-container',
+			anchor: '#message-input-container',
 			placement: 'top',
 			title: 'This is where it all happens',
 			body: "Your message box! Type anything here and hit send. Very soon you'll be dropping in your own knowledge and asking real questions about it — that's where the magic kicks in.",
@@ -127,18 +127,24 @@ export const ragTour: Tutorial = {
 		},
 		{
 			id: 'attach-knowledge',
-			anchor: '#chat-input-container',
-			placement: 'bottom',
-			padding: { top: 300, left: 16, right: 16, bottom: 20 },
+			anchor: '#message-input-container',
+			placement: 'top',
 			title: 'First, bring in your knowledge',
-			body: "Type “#” in the message box — your knowledge bases pop up just above. Pick the one you just created to attach it to this chat.",
+			body: 'Type “#” in the message box — your knowledge bases will pop up just above.',
+			advance: { type: 'element', anchor: '#suggestions-container' }
+		},
+		{
+			id: 'pick-knowledge',
+			anchor: '#suggestions-container',
+			placement: 'top',
+			title: 'Pick your knowledge base',
+			body: 'These are your knowledge bases — click the one you just created to attach it to this chat.',
 			advance: { type: 'signal', name: 'chat.kb.attached' }
 		},
 		{
 			id: 'type-question',
 			anchor: '#chat-input-container',
-			placement: 'bottom',
-			padding: { left: 16, right: 16, bottom: 20 },
+			placement: 'top',
 			title: 'Now ask your question',
 			body: "Type a real question about your document right here — something you'd genuinely like to know. Then hit Next.",
 			advance: { type: 'manual' }

@@ -236,7 +236,20 @@
 			rafId = null;
 			return;
 		}
-		if (anchorEl) rect = anchorEl.getBoundingClientRect();
+		if (anchorEl) {
+			if (anchorEl.isConnected) {
+				rect = anchorEl.getBoundingClientRect();
+			} else {
+				// Anchor left the DOM (e.g. the "#" command popup closed). Drop it and
+				// re-acquire so the spotlight reattaches when/if it reappears.
+				if (onAnchorClick) anchorEl.removeEventListener('click', onAnchorClick);
+				onAnchorClick = null;
+				anchorEl = null;
+				rect = null;
+				const sel = selectorFor(activeStep?.anchor);
+				if (sel) findAnchor(sel, false);
+			}
+		}
 		rafId = requestAnimationFrame(tick);
 	};
 
