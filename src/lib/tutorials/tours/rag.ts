@@ -136,7 +136,7 @@ export const ragTour: Tutorial = {
 		{
 			id: 'pick-knowledge',
 			anchor: '#suggestions-container',
-			placement: 'top',
+			placement: 'bottom',
 			title: 'Pick your knowledge base',
 			body: 'These are your knowledge bases — click the one you just created to attach it to this chat.',
 			advance: { type: 'signal', name: 'chat.kb.attached' }
