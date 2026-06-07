@@ -409,6 +409,7 @@
 				} else {
 					toast.success($i18n.t('File added successfully.'));
 					init();
+					emitTutorialSignal('kb.file.processed'); // tutorial: document uploaded & embedded
 				}
 			} else {
 				toast.error($i18n.t('Failed to upload file.'));
