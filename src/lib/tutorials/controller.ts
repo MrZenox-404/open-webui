@@ -58,6 +58,16 @@ export const nextStep = () => {
 	tutorial.set({ ...s, stepIndex: s.stepIndex + 1 });
 };
 
+// Jump directly to a step by id (e.g. skip an intermediate step when the user
+// performs its action early). No-op if the id isn't found.
+export const goToStepById = (id: string) => {
+	const s = get(tutorial);
+	const t = getTutorial(s.tourId);
+	if (!t) return;
+	const idx = t.steps.findIndex((st) => st.id === id);
+	if (idx >= 0 && idx !== s.stepIndex) tutorial.set({ ...s, stepIndex: idx });
+};
+
 export const prevStep = () => {
 	const s = get(tutorial);
 	if (s.stepIndex <= 0) return;

@@ -34,6 +34,11 @@ export interface TutorialStep {
 	loading?: boolean;
 	// Tips cycled one-at-a-time beneath the spinner (loading steps only).
 	tips?: string[];
+	// If this signal fires while the step is active, jump straight to the step
+	// with this id (skipping intermediate steps). Lets a "manual" step react to
+	// an action the user may take early — e.g. pressing Enter to send skips the
+	// explicit "click the send button" step.
+	signalSkip?: { name: string; to: string };
 }
 
 export interface Tutorial {

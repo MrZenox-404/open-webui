@@ -147,7 +147,9 @@ export const ragTour: Tutorial = {
 			placement: 'top',
 			title: 'Now ask your question',
 			body: "Type a real question about your document right here — something you'd genuinely like to know. Then hit Next.",
-			advance: { type: 'manual' }
+			advance: { type: 'manual' },
+			// If the user just presses Enter to send, skip the explicit send step.
+			signalSkip: { name: 'chat.submitted', to: 'generating' }
 		},
 		{
 			id: 'send-question',

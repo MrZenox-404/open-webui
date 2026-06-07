@@ -9,7 +9,7 @@
 	import { tutorial } from '$lib/stores';
 	import { tutorialSignal } from '$lib/tutorials/signals';
 	import { getTutorial } from '$lib/tutorials/registry';
-	import { nextStep, prevStep, exitTutorial } from '$lib/tutorials/controller';
+	import { nextStep, prevStep, exitTutorial, goToStepById } from '$lib/tutorials/controller';
 	import type { TutorialStep } from '$lib/tutorials/types';
 
 	const GAP = 14;
@@ -264,7 +264,12 @@
 			const s = get(tutorial);
 			if (!s.active) return;
 			const st = getTutorial(s.tourId)?.steps[s.stepIndex];
-			if (st?.advance?.type === 'signal' && st.advance.name === sig.name && sig.seq > baselineSeq) {
+			if (!st || sig.seq <= baselineSeq) return;
+			// signalSkip takes precedence: jump ahead if the user performed a later
+			// step's action early (e.g. pressed Enter to send).
+			if (st.signalSkip && st.signalSkip.name === sig.name) {
+				goToStepById(st.signalSkip.to);
+			} else if (st.advance?.type === 'signal' && st.advance.name === sig.name) {
 				nextStep();
 			}
 		});
@@ -275,7 +280,21 @@
 			start: (id = 'rag') =>
 				import('$lib/tutorials/controller').then((m) => m.startTutorial(id)),
 			reset: () => import('$lib/tutorials/controller').then((m) => m.resetTutorialPrefs()),
-			exit: exitTutorial
+			exit: exitTutorial,
+			// Jump to a step for testing: by 1-based number (matches the card's
+			// "n / total") or by step id, e.g. __tutorial.goto(18) / goto('send-question').
+			goto: (step: number | string, id = 'rag') => {
+				const tour = getTutorial(id);
+				if (!tour) return console.warn('[tutorial] unknown tour', id);
+				const idx =
+					typeof step === 'number'
+						? step - 1
+						: tour.steps.findIndex((s) => s.id === step);
+				if (idx < 0 || idx >= tour.steps.length)
+					return console.warn('[tutorial] no such step', step);
+				tutorial.set({ tourId: id, stepIndex: idx, active: true });
+				return `${idx + 1}/${tour.steps.length} → ${tour.steps[idx].id}`;
+			}
 		};
 
 		return unsub;
